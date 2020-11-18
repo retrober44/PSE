@@ -2,6 +2,7 @@
 # Add your specific settings to it.
 
 .idea
+Lylu.iml
 
 # This .gitignore file should be placed at the root of your Unity project directory
 #
@@ -74,3 +75,6 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# user custom files, etc.
+custom_spelling.dict

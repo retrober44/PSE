@@ -54,9 +54,8 @@ A feature is done if
 For C#, examples of this include
     - Properties, fields, delegates, and events are camelCase
     - Classes and methods are PascalCase
-    - Private fields do not have a `private` modifier
 - **Code is documented according to documentation rules (comments!) and documentation is not outdated**
-- **Acceptance criteria is satisfied**  
+- **Acceptance criteria / user story is satisfied (if available)**  
     An example of this might be
      
     `User story`: "As a user, I want to be able to leave a game session upon pressing

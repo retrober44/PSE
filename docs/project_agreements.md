@@ -5,10 +5,11 @@ This file contains agreements made between the teams during a meeting on 11/30/2
 
 #### Branches  
 Branches are to be named the following way:  
-`type/your-corresponding-jira-task-name-separated-by-hypens`  
+`team/type/your-corresponding-jira-task-name-separated-by-hypens`  
 Only create feature branches, do not create personal branches in which work on multiple tasks.
 Only work on one task per task branch.  
 Types are, for example, `feature` or `bugfix`.  
+Teams are `backend`, `design`, `m3`, `ssps`.
 
 Furthermore, we will be using the following branches:
 - **master**  

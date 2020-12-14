@@ -9,10 +9,35 @@ Project starts 2020-12-09
 [Meeting 6] happens at 2021-01-20 and displays on same row as [Meeting 5]
 [Meeting 7] happens at 2021-01-27 and displays on same row as [Meeting 6]
 [Meeting 8] happens at 2021-02-03 and displays on same row as [Meeting 7]
-[ProjektprÃ¤si] happens at 2021-02-10 and is colored in red
-[Meeting 4] displays on same row as [ProjektprÃ¤si]
+[ProjektprŠsi] happens at 2021-02-10 and is colored in red
+[Meeting 4] displays on same row as [ProjektprŠsi]
 
 -- Backend --
+[Backend Aufgaben besprechen] as [BA] happens at 2020-12-14
+
+then [Game manager skeleton] lasts 10 days and is 0% complete
+then [full Game manager] lasts 10 days and is 0% complete
+[BA] -> [Matchmaker lambda script]
+[Matchmaker lambda script] lasts 5 days and is 0% complete
+[Game manager skeleton] -> [Deploy server fleet Alpha]
+[Matchmaker lambda script] -> [Deploy server fleet Alpha]
+[Deploy server fleet Alpha] lasts 3 days and is 0% complete
+[BA] -> [initial M3 board]
+[initial M3 board] lasts 10 days and is 0% complete
+then [Game logic M3] lasts 18 days and is 0% complete
+[BA] -> [initial SSPS board]
+[initial SSPS board] lasts 9 days and is 0% complete
+then [Game logic SSPS] lasts 21 days and is 0% complete
+[initial M3 board] -> [Deploy server fleet Beta]
+[initial SSPS board] -> [Deploy server fleet Beta]
+[full Game manager] -> [Deploy server fleet Beta]
+[Deploy server fleet Alpha] -> [Deploy server fleet Beta]
+[Deploy server fleet Beta] lasts 2 days and is 0% complete
+[BA] -> [Game logic test script]
+[Game logic test script] lasts 7 days and is 0% complete
+then [Game logic test cases] lasts 14 days and is 0% complete
+[BA] -> [DynamoDB instance]
+[DynamoDB instance] starts 2020-12-15 and lasts 7 days and is 0% complete
 
 -- Frontend SSPS --
 

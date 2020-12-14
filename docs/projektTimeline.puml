@@ -9,8 +9,8 @@ Project starts 2020-12-09
 [Meeting 6] happens at 2021-01-20 and displays on same row as [Meeting 5]
 [Meeting 7] happens at 2021-01-27 and displays on same row as [Meeting 6]
 [Meeting 8] happens at 2021-02-03 and displays on same row as [Meeting 7]
-[Projektpräsi] happens at 2021-02-10 and is colored in red
-[Meeting 4] displays on same row as [Projektpräsi]
+[Project presentation] happens at 2021-02-10 and is colored in red
+[Meeting 4] displays on same row as [Project presentation]
 
 -- Backend --
 [Backend Aufgaben besprechen] as [BA] happens at 2020-12-14

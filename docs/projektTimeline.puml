@@ -1,0 +1,14 @@
+@startuml
+Project starts 2020-12-09
+[Example task 1] starts 2020-12-09 and lasts 14 days
+
+-- Backend --
+
+-- Frontend SSPS --
+
+-- Frontend M3 --
+
+-- Design --
+
+
+@enduml

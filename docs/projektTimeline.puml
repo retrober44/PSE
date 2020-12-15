@@ -41,6 +41,103 @@ then [Game logic test cases] lasts 14 days and is 0% complete
 
 -- Frontend SSPS --
 
+[SSPS implementation kickoff] as [SSPS] happens at 2020-12-14
+
+
+then [Tile: static] lasts 7 days and is 0% complete
+then [Tile: Character assignment] lasts 5 days and is 0% complete
+[Tile: Highlighting] lasts 5 days and is 0% complete
+[Tile: static] -> [Tile: Highlighting]
+[Board: index tiles] lasts 5 days and is 0% complete
+[Tile: static] -> [Board: index tiles]
+then [Board: Move validation] lasts 5 days and is 0% complete
+[UI elements] starts 2021-01-11 and lasts 10 days and is 0% complete
+[UI: Highlighting] lasts 6 days and is 0% complete
+[UI: turn timer] lasts 6 days and is 0% complete
+[UI: turn indicator] lasts 6 days and is 0% complete
+[UI elements] -> [UI: Highlighting]
+[UI elements] -> [UI: turn timer]
+[UI elements] -> [UI: turn indicator]
+
+[UI: Pre-Game elements] starts 2021-01-11 and lasts 5 days and is 0% complete
+
+[SSPS] -> [Character: graphical representation]
+[SSPS] -> [Character: internal representation]
+[Character: graphical representation] lasts 4 days and is 0% complete
+[Character: internal representation] lasts 2 days and is 0% complete
+[Board: index tiles] -> [Character: position]
+[Board: index tiles] -> [Character: move]
+
+[SSPS] -> [Spawner: initial setup]
+[Spawner: initial setup] lasts 4 days and is 0% complete
+then [Spawner: reset] lasts 4 days and is 0% complete
+
+[Spawner: initial setup] -> [PieceManager: index]
+[PieceManager: index] lasts 4 days and is 0% complete
+then [PieceManager: move] lasts 4 days and is 0% complete
+then [PieceManager: combat] lasts 4 days and is 0% complete
+then [PieceManager: remove] lasts 4 days and is 0% complete
+
+[PieceManager: move] -> [Character: move]
+[Character: position] lasts 4 days and is 0% complete
+[Character: move] lasts 4 days and is 0% complete
+[Character: internal representation] -> [Character: specialization]
+[Character: graphical representation] -> [Character: specialization]
+[Character: specialization] lasts 4 days and is 0% complete
+[PieceManager: index] -> [PieceManager: weapon distribution]
+[PieceManager: weapon distribution] lasts 4 days and is 0% complete
+[Turn: Countdown] -> [Turn: Networking integration]
+[PieceManager: Networking integration] starts at [Deploy server fleet Beta]'s end and lasts 7 days
+
+[AudioManager] starts 2021-01-11 and lasts 4 days and is 0% complete
+
+[SSPS] -> [GameManager]
+[GameManager] lasts 4 days and is 0% complete
+
+[SSPS] -> [Input: touch handling]
+[Input: touch handling] lasts 5 days and is 0% complete
+then [Input: clickable object] lasts 5 days and is 0% complete
+
+[SSPS] -> [Networking: SDK, setup]
+
+[Networking: SDK, setup] lasts 5 days and is 0% complete
+[Networking: send/receive commands] starts at [Deploy server fleet Alpha]'s end and is 0% complete and lasts 7 days
+[Networking: SDK, setup] -> [Networking: validation]
+[Networking: validation] -> [Networking: error handling]
+[Networking: validation] starts at [Deploy server fleet Alpha]'s end and is 0% complete and lasts 7 days
+[Networking: error handling] starts at [Networking: validation]'s end and lasts 7 days
+
+[Networking: send/receive commands] -> [Turn: Networking integration]
+
+
+[SSPS] -> [Turn: skeleton, local parts]
+[Turn: skeleton, local parts] lasts 7 days and is 0% complete
+
+[Turn: skeleton, local parts] -> [Turn: permission handling]
+[Turn: skeleton, local parts] -> [Turn: UI integration]
+[Turn: skeleton, local parts] -> [Turn: Countdown]
+[Game manager skeleton] -> [Turn: permission handling]
+[Game manager skeleton] -> [Turn: UI integration]
+[Game manager skeleton] -> [Turn: Countdown]
+[Turn: Networking integration] lasts 5 days and starts at [Deploy server fleet Beta]'s end
+[Turn: permission handling] lasts 5 days and is 0% complete
+[Turn: UI integration] lasts 5 days and is 0% complete
+[Turn: Countdown] lasts 5 days and is 0% complete
+
+[Meeting 7] -> [Dedicated Integration buffer]
+[Dedicated Integration buffer] lasts 7 days and is 0% complete
+then [Quality: and testing] lasts 4 days and is 0% complete
+[Dedicated Integration buffer] -> [Bugfixes]
+[Bugfixes] lasts 4 days and is 0% complete
+
+[Meeting 7] -> [Presentation preparation]
+[Presentation preparation] lasts 13 days and is 0% completed
+
+[Integrate various missing Assets] lasts 7 days and is 0% complete
+[Integrate SSPS characters] lasts 3 days and is 0% complete
+[Integrate SSPS movement anims] lasts 3 days and is 0% complete
+[Integrate SSPS UI] lasts 3 days and is 0% complete
+
 -- Frontend M3 --
 
 -- Design --
@@ -186,4 +283,10 @@ then [Game characters SSPS] lasts 10 days and is 0% complete
 [Starting animation M3] is colored in #ff00ee
 [Starting animation M3] lasts 5 days and is 0% complete
 
+/'Area for dependencies that need to be defined at EOF'/
+
+[Arrows SSPS] -> [Integrate various missing Assets]
+[Character animations SSPS] -> [Integrate SSPS characters]
+[Movement animation SSPS] -> [Integrate SSPS movement anims]
+[Game interface SSPS] -> [Integrate SSPS UI]
 @enduml

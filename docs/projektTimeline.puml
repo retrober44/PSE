@@ -44,6 +44,146 @@ then [Game logic test cases] lasts 14 days and is 0% complete
 -- Frontend M3 --
 
 -- Design --
+[Design Milestone] as [DM] happens at 2020-12-09
 
+then [Game characters SSPS] lasts 10 days and is 0% complete
+[Game characters SSPS] is colored in #fca903
+[Game characters SSPS] -[#fca903]> [Character animations SSPS]
+[Character animations SSPS] is colored in #fca903
+[Character animations SSPS] lasts 7 days and is 0% complete
+[Game characters SSPS] -[#fca903]> [Movement animation SSPS]
+[Movement animation SSPS] is colored in #fca903
+[Movement animation SSPS] starts at 2021-01-14
+[Movement animation SSPS] lasts 5 days and is 0% complete
+[Game characters SSPS] -[#fca903]> ["Dying" animation SSPS]
+["Dying" animation SSPS] is colored in #fca903
+["Dying" animation SSPS] starts at 2021-01-19
+["Dying" animation SSPS] lasts 5 days and is 0% complete
+[Game characters SSPS] -> [Win animation SSPS]
+[Game characters SSPS] -[#0356fc]> [Win animation SSPS]
+[Win animation SSPS] starts at 2021-01-27
+[Win animation SSPS] is colored in #0356fc
+[Win animation SSPS] lasts 5 days and is 0% complete
+
+[Game characters SSPS] -[#0356fc]> [Trap SSPS]
+[Trap SSPS] is colored in #0356fc
+[Trap SSPS] starts at 2021-01-17
+[Trap SSPS] lasts 5 days and is 0% complete
+[Trap SSPS] -[#0356fc]> [Trap animation SSPS]
+[Trap animation SSPS] is colored in #0356fc
+[Trap animation SSPS] lasts 5 days and is 0% complete
+[Game characters SSPS] -[#0356fc]> [King SSPS]
+[King SSPS] starts at 2021-01-04
+[King SSPS] is colored in #0356fc
+[King SSPS] lasts 5 days and is 0% complete
+
+[Game characters SSPS] -> [Fighting animations SSPS]
+[Weapons SSPS] -> [Fighting animations SSPS]
+[Fighting animations SSPS] starts at 2020-12-25
+[Fighting animations SSPS] lasts 14 days and is 0% complete
+
+[Weapons SSPS] starts at 2020-12-14
+[Weapons SSPS] is colored in #fca903
+[Weapons SSPS] lasts 10 days and is 0% complete
+
+[Weapons SSPS] -[#fca903]> [Weapon selection window SSPS]
+[Weapon selection window SSPS] is colored in #fca903
+[Weapon selection window SSPS] starts at 2021-01-29
+[Weapon selection window SSPS] lasts 3 days and is 0% complete
+
+[Game interface SSPS] starts at 2021-01-18
+[Game interface SSPS] is colored in #fca903
+[Game interface SSPS] lasts 10 days and is 0% complete
+
+[Initial Screen SSPS] starts at 2021-01-15
+[Initial Screen SSPS] is colored in #fca903
+[Initial Screen SSPS] lasts 5 days and is 0% complete
+[Initial Screen SSPS] -[#fca903]> [Starting animation SSPS]
+[Starting animation SSPS] is colored in #fca903
+[Starting animation SSPS] lasts 5 days and is 0% complete
+
+[Texts and buttons SSPS] starts at 2021-01-29
+[Texts and buttons SSPS] is colored in #fca903
+[Texts and buttons SSPS] lasts 5 days and is 0% complete
+
+[Referee SSPS] starts at 2021-01-17
+[Referee SSPS] is colored in #0356fc
+[Referee SSPS] lasts 10 days and is 0% complete
+[Referee SSPS] -[#0356fc]> [Turn display SSPS]
+[Turn display SSPS] lasts 3 days and is 0% complete
+[Turn display SSPS] is colored in #0356fc
+
+[Final Screen SSPS] starts at 2021-01-28
+[Final Screen SSPS] is colored in #0356fc
+[Final Screen SSPS] lasts 5 days and is 0% complete
+
+[Arrows SSPS] starts at 2021-01-31
+[Arrows SSPS] is colored in #0356fc
+[Arrows SSPS] lasts 3 days and is 0% complete
+
+/'M3'/
+[DM] -[#ff00ee]> [Game characters M3]
+[Game characters M3] is colored in #ff00ee
+
+[Game characters M3] lasts 10 days and is 0% complete
+[Game characters M3] -[#ff00ee]> [Character animations M3]
+[Character animations M3] is colored in #ff00ee
+[Character animations M3] lasts 10 days and is 0% complete
+[Game characters M3] -[#ff00ee]> [Win animation]
+[Win animation] starts at 2021-01-20
+[Win animation] is colored in #ff00ee
+[Win animation] lasts 7 days and is 0% complete
+
+[Game characters M3] -[#ff00ee]> [Score animation M3]
+[Score animation M3] starts at 2021-01-06
+[Score animation M3] is colored in #ff00ee
+[Score animation M3] lasts 14 days and is 0% complete
+
+[Game characters M3] -> [Tile insertion M3]
+[Game tiles M3] -> [Tile insertion M3]
+[Tile insertion M3] starts at 2021-01-11
+[Tile insertion M3] lasts 14 days and is 0% complete
+
+[DM] -[#0356fc]> [Game tiles M3]
+[Game tiles M3] is colored in #0356fc
+[Game tiles M3] lasts 10 days and is 0% complete
+[Game tiles M3] -[#ff00ee]> [Score explanation M3]
+[Score explanation M3] starts at 2021-01-30
+[Score explanation M3] is colored in #ff00ee
+[Score explanation M3] lasts 3 days and is 0% complete
+[Game tiles M3] -[#0356fc]> [Game tile animations M3]
+[Game tile animations M3] is colored in #0356fc
+[Game tile animations M3] lasts 14 days and is 0% complete
+
+[DM] -[#0356fc]> [Timer SSPS & M3]
+[Timer SSPS & M3] is colored in #0356fc
+[Timer SSPS & M3] lasts 7 days and is 0% complete
+
+[Texts and buttons M3] starts at 2021-01-29
+[Texts and buttons M3] is colored in #ff00ee
+[Texts and buttons M3] lasts 5 days and is 0% complete
+
+[Game interface M3] starts at 2020-12-13
+[Game interface M3] is colored in #ff00ee
+[Game interface M3] lasts 10 days and is 0% complete
+
+[Final Screen M3] starts at 2021-01-06
+[Final Screen M3] is colored in #ff00ee
+[Final Screen M3] lasts 7 days and is 0% complete
+
+[Turn display M3] starts at 2021-01-15
+[Turn display M3] is colored in #ff00ee
+[Turn display M3] lasts 5 days and is 0% complete
+
+[Scoreboards M3] starts at 2021-01-27
+[Scoreboards M3] is colored in #ff00ee
+[Scoreboards M3] lasts 5 days and is 0% complete
+
+[Initial Screen M3] starts at 2021-01-15
+[Initial Screen M3] is colored in #ff00ee
+[Initial Screen M3] lasts 7 days and is 0% complete
+[Initial Screen M3] -[#ff00ee]> [Starting animation M3]
+[Starting animation M3] is colored in #ff00ee
+[Starting animation M3] lasts 5 days and is 0% complete
 
 @enduml

@@ -139,6 +139,79 @@ then [Quality: and testing] lasts 4 days and is 0% complete
 [Integrate SSPS UI] lasts 3 days and is 0% complete
 
 -- Frontend M3 --
+[M3 Implementation Start] as [M3] happens at 2020-12-14
+
+then [Game board: UI] lasts 8 days and is 0% complete
+[Game board: UI] is colored in #6a0dad
+[Game board: UI] -> [Items: Graphics]
+
+[Items: Graphics] is colored in #6a0dad
+[Items: Graphics] lasts 5 days and is 0% complete
+
+then [Items: Behaviour] lasts 10 days and is 0% complete
+[Items: Behaviour] is colored in #6a0dad
+
+[Figures: Graphics] starts 2021-01-06 and lasts 5 days and is 0% complete 
+[Figures: Graphics] is colored in #6a0dad
+
+then [Figures: Behaviour] lasts 10 days and is 0% complete
+[Figures: Behaviour] is colored in #6a0dad
+
+[M3] -> [Start Screen]
+[Start Screen] lasts 15 days and is 0% complete
+[Start Screen] is colored in #ffff00
+
+[M3] -> [Player]
+[Player] lasts 15 days and is 0% complete
+[Player] is colored in #ffff00
+
+[UI: Displays] starts at [Game board: UI]'s end and lasts 14 days and is 0% complete
+[UI: Displays] is colored in #ffff00
+
+[Buttons] starts at [UI: Displays]'s end and lasts 7 days and is 0% complete
+[Buttons] is colored in #ffff00
+
+[Sounds] starts 2021-01-18 and lasts 7 days and is 0% complete
+[Sounds] is colored in #ffff00
+
+[End Screen] starts 2021-01-25 and lasts 6 days and is 0% complete
+[End Screen] is colored in #ffff00
+
+[M3] -> [Lucky Wheel]
+[Lucky Wheel] lasts 15 days and is 0% complete
+[Lucky Wheel] is colored in #d32f2f
+
+[M3] -> [Event Manager]
+[Event Manager] lasts 20 days and is 0% complete
+[Event Manager] is colored in #d32f2f
+
+[M3] -> [Game Manager]
+[Game Manager] lasts 20 days and is 0% complete
+[Game Manager] is colored in #d32f2f
+
+[Insert Logic] starts at [Items: Behaviour]'s end
+[Insert Logic] lasts 10 days and is 0% complete
+[Insert Logic] is colored in #d32f2f
+
+[M3] -> [Network Manager]
+[Network Manager] lasts 20 days and is 0% complete
+[Network Manager] is colored in #2f71d3
+
+[Match Logic] starts at [Game board: UI]'s end and lasts 14 days and is 0% complete
+[Match Logic] is colored in #2f71d3
+
+[Point system] starts at [Match Logic]'s end and lasts 14 days and is 0% complete
+[Point system] is colored in #2f71d3
+
+/'Integration'/
+[M3 Networking integration] starts at [Deploy server fleet Beta]'s end and lasts 10 days
+[Integrate Game UI] lasts 7 days and is 0% complete
+[Integrate Game Characters] lasts 10 days and is 0% complete
+[Integrate Game Tiles] lasts 7 days and is 0% complete
+[Integrate Final Screen] lasts 3 days and is 0% complete
+[Integrate Turn Display] lasts 3 days and is 0% complete
+[Integrate Start Screen] lasts 3 days and is 0% complete
+[Integrate remaining M3 assets] lasts 7 days and is 0% complete
 
 -- Design --
 [Design Milestone] as [DM] happens at 2020-12-09
@@ -289,4 +362,12 @@ then [Game characters SSPS] lasts 10 days and is 0% complete
 [Character animations SSPS] -> [Integrate SSPS characters]
 [Movement animation SSPS] -> [Integrate SSPS movement anims]
 [Game interface SSPS] -> [Integrate SSPS UI]
+
+[Game interface M3] -> [Integrate Game UI]
+[Character animations M3] -> [Integrate Game Characters]
+[Final Screen M3] -> [Integrate Final Screen]
+[Turn display M3] -> [Integrate Turn Display]
+[Starting animation M3] -> [Integrate Start Screen]
+[Tile insertion M3] -> [Integrate Game Tiles]
+[Texts and buttons M3] -> [Integrate remaining M3 assets]
 @enduml

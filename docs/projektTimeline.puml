@@ -45,16 +45,16 @@ then [Game logic test cases] lasts 14 days and is 0% complete
 [SSPS implementation kickoff] as [SSPS] happens at 2020-12-14
 
 
-then [Tile: static] lasts 7 days and is 0% complete
-then [Tile: Character assignment] lasts 5 days and is 0% complete
-[Tile: Highlighting] lasts 5 days and is 0% complete
+then [Tile: static] lasts 7 days and is 100% complete
+then [Tile: Character assignment] lasts 5 days and is 50% complete
+[Tile: Highlighting] lasts 5 days and is 100% complete
 [Tile: static] -> [Tile: Highlighting]
-[Board: index tiles] lasts 5 days and is 0% complete
+[Board: index tiles] lasts 5 days and is 100% complete
 [Tile: static] -> [Board: index tiles]
-then [Board: Move validation] lasts 5 days and is 0% complete
-[UI elements] starts 2021-01-11 and lasts 10 days and is 0% complete
+then [Board: Move validation] lasts 5 days and is 95% complete
+[UI elements] starts 2021-01-11 and lasts 10 days and is 10% complete
 [UI: Highlighting] lasts 6 days and is 0% complete
-[UI: turn timer] lasts 6 days and is 0% complete
+[UI: turn timer] lasts 6 days and is 50% complete
 [UI: turn indicator] lasts 6 days and is 0% complete
 [UI elements] -> [UI: Highlighting]
 [UI elements] -> [UI: turn timer]

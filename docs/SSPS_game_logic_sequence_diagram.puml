@@ -1,0 +1,71 @@
+# author: Alexander Verheugen
+@startuml
+!pragma teoz true
+
+header Backend
+title SSPS Game Logic Sequence Diagram (Draft)
+
+boundary game_logic_interface
+control "turn\ncontroller" as turn_controller
+entity countdown
+control "board\ncontroller" as board_controller
+entity board
+control "move\ncontroller" as move_controller
+control "strike\ncontroller" as strike_controller
+entity duell
+collections rules
+
+== Initialization==
+
+game_logic_interface <-[ : init
+game_logic_interface -> board_controller : init board
+board_controller -> board ** : create
+board_controller -> board : set start constellation
+activate board
+board_controller --> game_logic_interface : //done//
+game_logic_interface -->[ : //done//
+
+== Correct Move==
+
+{countdown_start} game_logic_interface <-[ : open move
+game_logic_interface -> turn_controller : log_timestamp(Player1)
+turn_controller -> countdown : start
+note right : wrap in Promise
+activate countdown
+{countdown_end} game_logic_interface <-[ : submit move
+{countdown_start} <-> {countdown_end} : max 10 sec
+game_logic_interface -> turn_controller : has_turn(Player1)
+turn_controller -> countdown : stop
+destroy countdown
+turn_controller --> game_logic_interface : //true//
+game_logic_interface -> board_controller : update_state(move)
+board_controller -> board : target pile accessible?
+board --> board_controller : //true//
+board_controller -> board : <b>move is strike?</b>
+alt move is not a strike
+    board --> board_controller : <b>//false//</b>
+    board_controller -> move_controller : may_move(pawn, direction)
+    move_controller -> rules : pick_rule_set(pawn)
+    rules --> move_controller
+    move_controller --> board_controller : //legal//
+    board_controller -> board : update_state
+    board_controller --> game_logic_interface : //done//
+    game_logic_interface -->[ : //done//
+else move is a strike
+    board --> board_controller : <b>//true//</b>
+    board_controller -> move_controller : may_strike(pawn, direction)
+    move_controller --> board_controller : //legal//
+    board_controller -> strike_controller: execute_strike(pawn1, pawn2)
+    alt strike without duell
+        strike_controller --> board_controller : //done//
+        board_controller -> board: update_state
+        board_controller --> game_logic_interface : //done//
+        game_logic_interface -->[ : //done//
+    else duell
+        strike_controller -> duell ** : create(pawn1, pawn2, pile)
+        strike_controller --> board_controller : //duell//
+        board_controller --> game_logic_interface : //duell//
+        game_logic_interface -->[ : //duell//
+        
+    
+@enduml

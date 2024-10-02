@@ -1,0 +1,271 @@
+@startuml
+
+header Team Backend
+title Message Flow of the Game Manager
+footer Last edited at 18th December 2020.
+
+actor Player1
+actor Player2
+boundary RealtimeServer
+participant GameManager #FFAAAA
+
+==Initialization==
+
+activate RealtimeServer
+RealtimeServer -> GameManager ++: init(session)
+return
+RealtimeServer -> GameManager ++: onProcessStarted()
+return
+deactivate RealtimeServer
+
+...wait for first player...
+
+Player1 -> RealtimeServer++: getGameSession
+activate Player1
+hnote over RealtimeServer #aqua: creates GameSession
+RealtimeServer -> GameManager ++: onStartGameSession(gameSession)
+return GameSession
+return GameSession
+
+Player1 -> RealtimeServer++: getPlayerSession
+RealtimeServer -> GameManager ++: onPlayerConnect(player)
+return true
+
+hnote over RealtimeServer #aqua: creates PlayerSession
+RealtimeServer --> Player1: PlayerSession1
+deactivate Player1
+
+RealtimeServer -> GameManager ++: onPlayerAccepted(player)
+GameManager -> GameManager++: sendStringToPlayer(opcode: 1, payload: peerId#1, recipient: Player1)
+GameManager -> RealtimeServer: sendMessage({opcode: 1, payload: peerId#1}, recipient: Player1)
+RealtimeServer ->>o Player1: {opcode: 1, payload: peerId#1}
+deactivate Player1
+GameManager --> GameManager--
+GameManager --> RealtimeServer--
+deactivate RealtimeServer
+
+note over Player1, GameManager
+    As a shorthand, messages from now on are drawn from the GameManager directly to the Player and vice versa.
+end note
+
+...wait for second player...
+
+Player2 -> RealtimeServer ++: getGameSession
+activate Player2
+return
+Player2 -> RealtimeServer ++: getPlayerSession
+RealtimeServer -> GameManager ++: onPlayerConnect(player)
+return true
+RealtimeServer -> GameManager ++: onPlayerAccepted(player)
+GameManager ->> Player2: {opcode: 1, payload: peerId#2}
+deactivate Player2
+
+
+==Ready?==
+
+GameManager -> GameManager++: askForReadiness()
+
+GameManager->>Player1 ++: {opcode: 10, payload: '1'}
+note right #white: opcode 10: your player nr
+GameManager->>Player2 ++: {opcode: 10, payload: '2'}
+GameManager --> GameManager --
+GameManager-->RealtimeServer--
+deactivate RealtimeServer
+
+note over Player1, Player2 #white: response order is irrelevant
+
+Player1->>GameManager: {opcode: 10, payload: none}
+deactivate Player1
+activate RealtimeServer
+activate GameManager
+note right #white: opcode 10: i am ready
+GameManager->GameLogic++: onMessage(opcode: 10, payload: none, playerNr: 1)
+hnote over GameLogic #aqua: sets Player 1
+return <i>null</i>
+GameManager --> RealtimeServer --
+deactivate RealtimeServer
+
+Player2->>GameManager: {opcode: 10, payload: none}
+deactivate Player2
+activate RealtimeServer
+activate GameManager
+GameManager->GameLogic ++: onMessage(opcode: 10, payload: none, playerNr: 2)
+hnote over GameLogic #aqua: sets Player 2
+return [{opcode: 12, payload: none},{opcode: 12, payload: none}]
+
+hnote over GameManager #aqua: both player ready
+
+
+==Set!==
+
+GameManager->>Player1++: {opcode: 12, payload: none}
+note right #white: opcode 12: all players ready, choose special pawns
+GameManager->>Player2++: {opcode: 12, payload: none}
+GameManager --> RealtimeServer --
+deactivate RealtimeServer
+
+note over Player1, Player2 #white: response order is irrelevant
+
+Player2->>GameManager--: {opcode 12, payload: "{'flag': 'a1', 'trap': 'b3'}"}
+activate RealtimeServer
+activate GameManager
+GameManager->GameLogic++: onMessage(opcode: 12, payload: "{'flag': 'a1', 'trap': 'b3'}", playerNr: 2)
+return {opcode: 11, payload: bordPlayer2}
+GameManager ->>o Player2 : {opcode: 11, payload: bordPlayer2 (stringified)}
+GameManager --> RealtimeServer --
+deactivate RealtimeServer
+
+|||
+
+Player1->>GameManager--: {opcode 12, payload: "{'flag': 'a1', 'trap': 'a2'}"}
+activate RealtimeServer
+activate GameManager
+GameManager->GameLogic++: onMessage(opcode: 12, payload: "{'flag': 'a1', 'trap': 'a2'}", playerNr: 1)
+return {opcode: 11, payload: bordPlayer1}
+GameManager ->>o Player1: {opcode: 11, payload: bordPlayer1 (stringified)}
+
+hnote over GameManager #aqua: both player set
+
+
+==Go!==
+
+GameManager->>Player1++: {opcode: 20, payload: 1}
+note right #white: opcode 20: player x has turn
+GameManager ->>o Player2 --: {opcode: 20, payload: 2}
+GameManager --> RealtimeServer
+deactivate RealtimeServer
+
+
+==Moves==
+
+Player1 ->> GameManager -- : {opcode: 30, payload: "c2c3"}
+activate RealtimeServer
+activate GameManager
+GameManager -> GameLogic ++ : onMessage(opcode: 30, payload: "c2c3", playerNr: 1)
+
+note over GameLogic
+    Positions are relative to receiving
+    player and therefore turned around.
+end note
+
+return {opcode: 30, payload: "c5c4", playerNr: 2}
+GameManager->>Player2 ++: {opcode 30, payload: "c5c4"}
+note right #white: opcode 30: it's your turn
+GameManager --> RealtimeServer --
+deactivate RealtimeServer
+
+|||
+
+Player2 ->> GameManager -- : {opcode: 30, payload: "d2d3"}
+note right #white: opcode 30: my move
+activate RealtimeServer
+activate GameManager
+GameManager -> GameLogic ++: onMessage(opcode: 30, payload: "d2d3", playerNr: 2)
+return {opcode: 30, payload: "d5d4", playerNr: 1}
+GameManager ->> Player1++: {opcode: 30, payload: "d5d4"}
+GameManager --> RealtimeServer --
+deactivate RealtimeServer
+
+
+loop
+
+Player1 ->> GameManager -- : {opcode: 30, payload: X}
+activate RealtimeServer
+activate GameManager
+GameManager -> GameLogic ++ : onMessage(opcode: 30, payload: X, playerNr: 1)
+
+
+return {opcode: 30, payload: Y, playerNr: 2}
+GameManager->>Player2 ++: {opcode 30, payload: Y}
+GameManager --> RealtimeServer --
+deactivate RealtimeServer
+
+|||
+
+Player2 ->> GameManager -- : {opcode: 30, payload: Y}
+activate RealtimeServer
+activate GameManager
+GameManager -> GameLogic ++: onMessage(opcode: 30, payload: Y, playerNr: 2)
+return {opcode: 30, payload: Z, playerNr: 1}
+GameManager ->> Player1++: {opcode: 30, payload: Z}
+GameManager --> RealtimeServer --
+deactivate RealtimeServer
+
+end loop
+
+
+==Winner==
+
+Player1 ->> GameManager -- : {opcode: 30, payload: X}
+activate RealtimeServer
+activate GameManager
+GameManager -> GameLogic ++ : onMessage(opcode: 30, payload: X, playerNr: 1)
+note over GameManager, GameLogic: We need the scores as return values somehow.
+return [{opcode: 40, payload: 1}, {opcode: 40, payload: 1}]
+hnote over GameManager #aqua: game over
+GameManager->>Player1: {opcode 40, payload: 1}
+note right #white: opcode 40: game over
+GameManager->>Player2: {opcode 40, payload: 1}
+GameManager -> GameManager++: stopGame()
+hnote over GameManager #white: clearing player readiness
+return
+
+
+==Save to Database==
+
+GameManager -> GameManager++: saveScoresToDatabase(scores)
+note over GameManager: function not yet implemented
+return
+GameManager --> RealtimeServer --
+deactivate RealtimeServer
+
+==Revanche?==
+
+alt no replay and leaving game server
+
+Player1 ->> GameManager ++ : {opcode: 5}
+activate RealtimeServer
+note right #white: opcode 5: player wants to play again
+GameManager ->> Player2++ : {opcode: 5}
+GameManager --> RealtimeServer --
+deactivate RealtimeServer
+
+Player2 -x RealtimeServer ++ : disconnect
+destroy Player2
+RealtimeServer -> GameManager ++ : onPlayerDisconnect()
+GameManager ->> Player1 ++: {opcode: 300}
+GameManager -> GameManager++: stopSession()
+GameManager --> RealtimeServer-- : processEnding()
+deactivate GameManager
+destroy RealtimeServer
+destroy Player1
+
+else direct disconnect
+
+Player1 -x RealtimeServer ++ : disconnect
+destroy Player1
+RealtimeServer -> GameManager ++ : onPlayerDisconnect()
+GameManager ->> Player2 ++: {opcode: 300}
+GameManager -> GameManager++: stopSession()
+GameManager --> RealtimeServer-- : processEnding()
+deactivate GameManager
+destroy RealtimeServer
+destroy Player2
+
+else play again
+
+Player2 o->> GameManager ++: {opcode: 5}
+activate RealtimeServer
+GameManager ->> Player1 ++: {opcode: 5}
+GameManager --> RealtimeServer --
+deactivate RealtimeServer
+
+Player1 ->> GameManager ++: {opcode: 5}
+activate RealtimeServer
+hnote over GameManager #aqua: both player want to play again
+
+ref over RealtimeServer, GameManager: Continue with section "Ready?".
+
+end alt
+
+@enduml

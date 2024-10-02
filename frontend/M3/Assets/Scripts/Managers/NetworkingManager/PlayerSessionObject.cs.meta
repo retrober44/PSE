@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<< HEAD:frontend/M3/Assets/Scripts/Managers/NetworkingManager/PlayerSessionObject.cs.meta
+guid: 78c7f198802169a45973270d2468158b
+=======
+guid: 97054e89105e74b46bed16fce0f3dab2
+>>>>>>> develop:frontend/M3/Assets/Scripts/GameObjects/Item.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -11,34 +11,39 @@ Project starts 2020-12-09
 [Meeting 8] happens at 2021-02-03 and displays on same row as [Meeting 7]
 [Project presentation] happens at 2021-02-10 and is colored in red
 [Meeting 4] displays on same row as [Project presentation]
+2021-01-20 is colored in orange
+2021-01-20 to 2021-01-20 is named [ ⯆ <b>Letzte Änderung</b>]
+
 
 -- Backend --
 [Backend Aufgaben besprechen] as [BA] happens at 2020-12-14
-
-then [Game manager skeleton] is colored in aquamarine/blue and lasts 10 days and is 90% complete
-then [full Game manager] lasts 5 days and is 20% complete
-[Matchmaker lambda script] starts 7 days after [BA]'s end
-[Matchmaker lambda script] lasts 3 days and is 90% complete
-[Game manager skeleton] -[#0000FF]-> [Deploy server fleet Alpha]
-[Matchmaker lambda script] -[#0000FF]-> [Deploy server fleet Alpha]
-[Deploy server fleet Alpha] lasts 3 days and is 0% complete
-[initial M3 board] starts 10 days after [BA]'s end
-[initial M3 board] lasts 5 days and is 0% complete
-then [Game logic M3] lasts 18 days and is 0% complete
+then [Game manager skeleton] lasts 10 days and is 100% complete
+[BA] -> [DynamoDB instance]
+[DynamoDB instance] starts 2020-12-15 and lasts 7 days and is 100% complete
+[BA] -> [Matchmaker lambda script]
+[Matchmaker lambda script] lasts 5 days and is 100% complete
+[Game manager skeleton] -> [Deploy server fleet Alpha]
+[Matchmaker lambda script] -> [Deploy server fleet Alpha]
+[Deploy server fleet Alpha] starts 3 days after [Game manager skeleton]'s end and lasts 9 days and is 100% complete
+[Game manager skeleton] -> [full Game manager]
+[full Game manager] starts 2 days after [Deploy server fleet Alpha]'s end and is colored in orange/black
+[full Game manager] lasts 4 days and is 33% complete
+[Update API Documentation] lasts 3 days and is 0% complete and starts 3 days after [Deploy server fleet Alpha]'s end
+[BA] -> [initial M3 board]
+[initial M3 board] lasts 10 days and is 90% complete
+then [Game logic M3] lasts 14 days and is 100% complete
 [BA] -> [initial SSPS board]
-[initial SSPS board] lasts 13 days and is 80% complete
-then [Game logic SSPS] lasts 21 days and is 0% complete
+[initial SSPS board] lasts 9 days and is 100% complete
+then [Game logic SSPS] lasts 15 days and is 100% complete
 [initial M3 board] -> [Deploy server fleet Beta]
 [initial SSPS board] -> [Deploy server fleet Beta]
 [full Game manager] -> [Deploy server fleet Beta]
 [Deploy server fleet Alpha] -> [Deploy server fleet Beta]
 [Deploy server fleet Beta] lasts 2 days and is 0% complete
-[Game logic test script] starts 9 days after [BA]'s end
-[Game logic test script] lasts 5 days and is 50% complete
-then [Game logic test cases] lasts 14 days and is 0% complete
-[BA] -> [DynamoDB instance]
-[DynamoDB instance] starts 2020-12-15 and lasts 7 days and is 80% complete
-[DynamoDB instance] -> [full Game manager]
+[Game logic test script] starts 7 days after [BA]'s end and lasts 4 days and is 100% complete
+[Game logic test cases] starts 2 days after [Game logic test script]'s end and lasts 20 days and is 30% complete
+[Bugfixes Game logic M3] lasts 8 days and ends 3 days after [Game logic test cases]'s end and is 30% complete
+[Bugfixes Game logic SSPS] lasts 8 days and ends 3 days after [Game logic test cases]'s end and is 30% complete
 
 -- Frontend SSPS --
 
@@ -46,26 +51,26 @@ then [Game logic test cases] lasts 14 days and is 0% complete
 
 
 then [Tile: static] lasts 7 days and is 100% complete
-then [Tile: Character assignment] lasts 5 days and is 50% complete
+then [Tile: Character assignment] lasts 5 days and is 100% complete
 [Tile: Highlighting] lasts 5 days and is 100% complete
 [Tile: static] -> [Tile: Highlighting]
 [Board: index tiles] lasts 5 days and is 100% complete
 [Tile: static] -> [Board: index tiles]
-then [Board: Move validation] lasts 5 days and is 95% complete
-[UI elements] starts 2021-01-11 and lasts 10 days and is 10% complete
-[UI: Highlighting] lasts 6 days and is 0% complete
+then [Board: Move validation] lasts 5 days and is 80% complete
+[UI elements] starts 2021-01-11 and lasts 10 days and is 50% complete
+[UI: Highlighting] lasts 6 days and is 100% complete
 [UI: turn timer] lasts 6 days and is 50% complete
-[UI: turn indicator] lasts 6 days and is 0% complete
+[UI: turn indicator] lasts 6 days and is 50% complete
 [UI elements] -> [UI: Highlighting]
 [UI elements] -> [UI: turn timer]
 [UI elements] -> [UI: turn indicator]
 
-[UI: Pre-Game elements] starts 2021-01-11 and lasts 5 days and is 0% complete
+[UI: Pre-Game elements] starts 2021-01-11 and lasts 5 days and is 80% complete
 
 [SSPS] -> [Character: graphical representation]
 [SSPS] -> [Character: internal representation]
-[Character: graphical representation] lasts 4 days and is 0% complete
-[Character: internal representation] lasts 2 days and is 0% complete
+[Character: graphical representation] lasts 4 days and is 30% complete
+[Character: internal representation] lasts 2 days and is 100% complete
 [Board: index tiles] -> [Character: position]
 [Board: index tiles] -> [Character: move]
 
@@ -74,34 +79,35 @@ then [Board: Move validation] lasts 5 days and is 95% complete
 then [Spawner: reset] lasts 4 days and is 0% complete
 
 [Spawner: initial setup] -> [PieceManager: index]
-[PieceManager: index] lasts 4 days and is 0% complete
-then [PieceManager: move] lasts 4 days and is 0% complete
+[PieceManager: index] lasts 4 days and is 100% complete
+then [PieceManager: move] lasts 4 days and is 100% complete
 then [PieceManager: combat] lasts 4 days and is 0% complete
-then [PieceManager: remove] lasts 4 days and is 0% complete
+then [PieceManager: remove] lasts 4 days and is 100% complete
 
 [PieceManager: move] -> [Character: move]
-[Character: position] lasts 4 days and is 0% complete
-[Character: move] lasts 4 days and is 0% complete
+[Character: position] lasts 4 days and is 100% complete
+[Character: move] lasts 4 days and is 75% complete
 [Character: internal representation] -> [Character: specialization]
 [Character: graphical representation] -> [Character: specialization]
-[Character: specialization] lasts 4 days and is 0% complete
+[Character: specialization] lasts 4 days and is 100% complete
 [PieceManager: index] -> [PieceManager: weapon distribution]
-[PieceManager: weapon distribution] lasts 4 days and is 0% complete
+[PieceManager: weapon distribution] lasts 4 days and is 100% complete
 [Turn: Countdown] -> [Turn: Networking integration]
-[PieceManager: Networking integration] starts at [Deploy server fleet Beta]'s end and lasts 7 days
+[Turn: Networking integration] is 0% complete
+[PieceManager: Networking integration] starts at [Deploy server fleet Beta]'s end and lasts 7 days and is 0% complete
 
 [AudioManager] starts 2021-01-11 and lasts 4 days and is 0% complete
 
 [SSPS] -> [GameManager]
-[GameManager] lasts 4 days and is 0% complete
+[GameManager] lasts 4 days and is 100% complete
 
 [SSPS] -> [Input: touch handling]
-[Input: touch handling] lasts 5 days and is 0% complete
-then [Input: clickable object] lasts 5 days and is 0% complete
+[Input: touch handling] lasts 5 days and is 100% complete
+then [Input: clickable object] lasts 5 days and is 100% complete
 
 [SSPS] -> [Networking: SDK, setup]
 
-[Networking: SDK, setup] lasts 5 days and is 0% complete
+[Networking: SDK, setup] lasts 5 days and is 100% complete
 [Networking: send/receive commands] starts at [Deploy server fleet Alpha]'s end and is 0% complete and lasts 7 days
 [Networking: SDK, setup] -> [Networking: validation]
 [Networking: validation] -> [Networking: error handling]
@@ -112,7 +118,7 @@ then [Input: clickable object] lasts 5 days and is 0% complete
 
 
 [SSPS] -> [Turn: skeleton, local parts]
-[Turn: skeleton, local parts] lasts 7 days and is 0% complete
+[Turn: skeleton, local parts] lasts 7 days and is 100% complete
 
 [Turn: skeleton, local parts] -> [Turn: permission handling]
 [Turn: skeleton, local parts] -> [Turn: UI integration]
@@ -121,18 +127,20 @@ then [Input: clickable object] lasts 5 days and is 0% complete
 [Game manager skeleton] -> [Turn: UI integration]
 [Game manager skeleton] -> [Turn: Countdown]
 [Turn: Networking integration] lasts 5 days and starts at [Deploy server fleet Beta]'s end
-[Turn: permission handling] lasts 5 days and is 0% complete
-[Turn: UI integration] lasts 5 days and is 0% complete
-[Turn: Countdown] lasts 5 days and is 0% complete
+[Turn: permission handling] lasts 5 days and is 50% complete
+[Turn: UI integration] lasts 5 days and is 25% complete
+[Turn: Countdown] lasts 5 days and is 50% complete
 
 [Meeting 7] -> [Dedicated Integration buffer]
 [Dedicated Integration buffer] lasts 7 days and is 0% complete
 then [Quality: and testing] lasts 4 days and is 0% complete
 [Dedicated Integration buffer] -> [Bugfixes]
+[Dedicated Integration buffer] -> [User tests]
 [Bugfixes] lasts 4 days and is 0% complete
+[User tests] lasts 4 days and is 0% complete
 
-[Meeting 7] -> [Presentation preparation]
-[Presentation preparation] lasts 13 days and is 0% completed
+[Meeting 7] -> [Presentation / paper preparation]
+[Presentation / paper preparation] lasts 13 days and is 0% completed
 
 [Integrate various missing Assets] lasts 7 days and is 0% complete
 [Integrate SSPS characters] lasts 3 days and is 0% complete
@@ -142,14 +150,14 @@ then [Quality: and testing] lasts 4 days and is 0% complete
 -- Frontend M3 --
 [M3 Implementation Start] as [M3] happens at 2020-12-14
 
-then [Game board: UI] lasts 8 days and is 0% complete
+then [Game board: UI] lasts 8 days and is 70% complete
 [Game board: UI] is colored in #6a0dad
 [Game board: UI] -> [Items: Graphics]
 
 [Items: Graphics] is colored in #6a0dad
-[Items: Graphics] lasts 5 days and is 0% complete
+[Items: Graphics] lasts 5 days and is 70% complete
 
-then [Items: Behaviour] lasts 10 days and is 0% complete
+then [Items: Behaviour] lasts 10 days and is 20% complete
 [Items: Behaviour] is colored in #6a0dad
 
 [Figures: Graphics] starts 2021-01-06 and lasts 5 days and is 0% complete 
@@ -179,15 +187,16 @@ then [Figures: Behaviour] lasts 10 days and is 0% complete
 [End Screen] is colored in #ffff00
 
 [M3] -> [Lucky Wheel]
-[Lucky Wheel] lasts 15 days and is 0% complete
+[Lucky Wheel] starts at 2021-01-22
+[Lucky Wheel] lasts 10 days and is 0% complete
 [Lucky Wheel] is colored in #d32f2f
 
 [M3] -> [Event Manager]
-[Event Manager] lasts 20 days and is 0% complete
+[Event Manager] lasts 20 days and is 100% complete
 [Event Manager] is colored in #d32f2f
 
-[M3] -> [Game Manager]
-[Game Manager] lasts 20 days and is 0% complete
+[Event Manager] -> [Game Manager]
+[Game Manager] lasts 10 days and is 40% complete
 [Game Manager] is colored in #d32f2f
 
 [Insert Logic] starts at [Items: Behaviour]'s end
@@ -195,10 +204,11 @@ then [Figures: Behaviour] lasts 10 days and is 0% complete
 [Insert Logic] is colored in #d32f2f
 
 [M3] -> [Network Manager]
-[Network Manager] lasts 20 days and is 0% complete
+[Network Manager] lasts 20 days and is 70% complete
 [Network Manager] is colored in #2f71d3
 
-[Match Logic] starts at [Game board: UI]'s end and lasts 14 days and is 0% complete
+[Match Logic] starts at [Game board: UI]'s end
+[Match Logic] lasts 14 days and is 30% complete
 [Match Logic] is colored in #2f71d3
 
 [Point system] starts at [Match Logic]'s end and lasts 14 days and is 0% complete
@@ -217,43 +227,47 @@ then [Figures: Behaviour] lasts 10 days and is 0% complete
 -- Design --
 [Design Milestone] as [DM] happens at 2020-12-09
 
-then [Game characters SSPS] lasts 10 days and is 0% complete
+[DM] -[#fca903]> [Game characters SSPS]
+then [Game characters SSPS] lasts 13 days and is 100% complete
 [Game characters SSPS] is colored in #fca903
 [Game characters SSPS] -[#fca903]> [Character animations SSPS]
+[Character animations SSPS] starts at 2021-01-20
 [Character animations SSPS] is colored in #fca903
 [Character animations SSPS] lasts 7 days and is 0% complete
 [Game characters SSPS] -[#fca903]> [Movement animation SSPS]
 [Movement animation SSPS] is colored in #fca903
-[Movement animation SSPS] starts at 2021-01-14
+[Movement animation SSPS] starts at 2021-01-27
 [Movement animation SSPS] lasts 5 days and is 0% complete
 [Game characters SSPS] -[#fca903]> ["Dying" animation SSPS]
 ["Dying" animation SSPS] is colored in #fca903
 ["Dying" animation SSPS] starts at 2021-01-19
 ["Dying" animation SSPS] lasts 5 days and is 0% complete
 [Game characters SSPS] -> [Win animation SSPS]
-[Game characters SSPS] -[#0356fc]> [Win animation SSPS]
+[Game characters SSPS] -[#fca903]> [Win animation SSPS]
 [Win animation SSPS] starts at 2021-01-27
-[Win animation SSPS] is colored in #0356fc
+[Win animation SSPS] is colored in #fca903
 [Win animation SSPS] lasts 5 days and is 0% complete
 
-[Game characters SSPS] -[#0356fc]> [Trap SSPS]
-[Trap SSPS] is colored in #0356fc
-[Trap SSPS] starts at 2021-01-17
+[Game characters SSPS] -[#fca903]> [Trap SSPS]
+[Trap SSPS] is colored in #fca903
+[Trap SSPS] starts at 2021-01-11
 [Trap SSPS] lasts 5 days and is 0% complete
-[Trap SSPS] -[#0356fc]> [Trap animation SSPS]
-[Trap animation SSPS] is colored in #0356fc
+[Trap SSPS] -[#fca903]> [Trap animation SSPS]
+[Trap animation SSPS] starts at 2021-01-18
+[Trap animation SSPS] is colored in #fca903
 [Trap animation SSPS] lasts 5 days and is 0% complete
-[Game characters SSPS] -[#0356fc]> [King SSPS]
-[King SSPS] starts at 2021-01-04
-[King SSPS] is colored in #0356fc
+[Game characters SSPS] -[#fca903]> [King SSPS]
+[King SSPS] starts at 2021-01-09
+[King SSPS] is colored in #fca903
 [King SSPS] lasts 5 days and is 0% complete
 
-[Game characters SSPS] -> [Fighting animations SSPS]
-[Weapons SSPS] -> [Fighting animations SSPS]
-[Fighting animations SSPS] starts at 2020-12-25
+[Game characters SSPS] -[#fca903]> [Fighting animations SSPS]
+[Weapons SSPS] -[#fca903]> [Fighting animations SSPS]
+[Fighting animations SSPS] starts at 2021-01-22
+[Fighting animations SSPS] is colored in #fca903
 [Fighting animations SSPS] lasts 14 days and is 0% complete
 
-[Weapons SSPS] starts at 2020-12-14
+[Weapons SSPS] starts at 2021-01-11
 [Weapons SSPS] is colored in #fca903
 [Weapons SSPS] lasts 10 days and is 0% complete
 
@@ -262,7 +276,7 @@ then [Game characters SSPS] lasts 10 days and is 0% complete
 [Weapon selection window SSPS] starts at 2021-01-29
 [Weapon selection window SSPS] lasts 3 days and is 0% complete
 
-[Game interface SSPS] starts at 2021-01-18
+[Game interface SSPS] starts at 2021-01-17
 [Game interface SSPS] is colored in #fca903
 [Game interface SSPS] lasts 10 days and is 0% complete
 
@@ -273,23 +287,23 @@ then [Game characters SSPS] lasts 10 days and is 0% complete
 [Starting animation SSPS] is colored in #fca903
 [Starting animation SSPS] lasts 5 days and is 0% complete
 
-[Texts and buttons SSPS] starts at 2021-01-29
+[Texts and buttons SSPS] starts at 2021-01-25
 [Texts and buttons SSPS] is colored in #fca903
 [Texts and buttons SSPS] lasts 5 days and is 0% complete
 
-[Referee SSPS] starts at 2021-01-17
-[Referee SSPS] is colored in #0356fc
+[Referee SSPS] starts at 2021-01-10
+[Referee SSPS] is colored in #fca903
 [Referee SSPS] lasts 10 days and is 0% complete
-[Referee SSPS] -[#0356fc]> [Turn display SSPS]
+[Referee SSPS] -[#fca903]> [Turn display SSPS]
 [Turn display SSPS] lasts 3 days and is 0% complete
-[Turn display SSPS] is colored in #0356fc
+[Turn display SSPS] is colored in #fca903
 
-[Final Screen SSPS] starts at 2021-01-28
-[Final Screen SSPS] is colored in #0356fc
+[Final Screen SSPS] starts at 2021-01-22
+[Final Screen SSPS] is colored in #fca903
 [Final Screen SSPS] lasts 5 days and is 0% complete
 
-[Arrows SSPS] starts at 2021-01-31
-[Arrows SSPS] is colored in #0356fc
+[Arrows SSPS] starts at 2021-01-22
+[Arrows SSPS] is colored in #fca903
 [Arrows SSPS] lasts 3 days and is 0% complete
 
 /'M3'/
@@ -310,24 +324,25 @@ then [Game characters SSPS] lasts 10 days and is 0% complete
 [Score animation M3] is colored in #ff00ee
 [Score animation M3] lasts 14 days and is 0% complete
 
-[Game characters M3] -> [Tile insertion M3]
-[Game tiles M3] -> [Tile insertion M3]
+[Game characters M3] -[#ff00ee]> [Tile insertion M3]
+[Game tiles M3] -[#ff00ee]> [Tile insertion M3]
 [Tile insertion M3] starts at 2021-01-11
+[Tile insertion M3] is colored in #ff00ee
 [Tile insertion M3] lasts 14 days and is 0% complete
 
-[DM] -[#0356fc]> [Game tiles M3]
-[Game tiles M3] is colored in #0356fc
+[DM] -[#ff00ee]> [Game tiles M3]
+[Game tiles M3] is colored in #ff00ee
 [Game tiles M3] lasts 10 days and is 0% complete
 [Game tiles M3] -[#ff00ee]> [Score explanation M3]
 [Score explanation M3] starts at 2021-01-30
 [Score explanation M3] is colored in #ff00ee
 [Score explanation M3] lasts 3 days and is 0% complete
-[Game tiles M3] -[#0356fc]> [Game tile animations M3]
-[Game tile animations M3] is colored in #0356fc
+[Game tiles M3] -[#ff00ee]> [Game tile animations M3]
+[Game tile animations M3] is colored in #ff00ee
 [Game tile animations M3] lasts 14 days and is 0% complete
 
-[DM] -[#0356fc]> [Timer SSPS & M3]
-[Timer SSPS & M3] is colored in #0356fc
+[DM] -[#ff00ee]> [Timer SSPS & M3]
+[Timer SSPS & M3] is colored in #ff00ee
 [Timer SSPS & M3] lasts 7 days and is 0% complete
 
 [Texts and buttons M3] starts at 2021-01-29

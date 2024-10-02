@@ -1,0 +1,19 @@
+{
+  "name": "lylu",
+  "version": "1.0.0",
+  "author": "",
+  "license": "MIT",
+  "scripts": {
+    "test": "./node_modules/.bin/karma start --single-run",
+    "test:watch": "./node_modules/.bin/karma start"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.810.0",
+    "uuid": "^3.3.2",
+    "jasmine": "^3.6.3",
+    "karma": "^6.0.0",
+    "karma-cli": "^2.0.0",
+    "karma-jasmine": "^4.0.1",
+    "karma-spec-reporter": "0.0.32"
+  }
+}

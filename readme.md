@@ -1,6 +1,4 @@
-# Projekt Systementwicklung WS 20/21 bei Prof. Harriehausen-Mühlbauer mit Lylu
-Read more about Lylu at https://lylu.de - Lylu simplifies grandparents' access to the internet through an app in which every function has the same look and feel.
-
+# Projekt Systementwicklung 
 
 ## What will you be building?
 Over the course of this project, you will be building two multiplayer games using the Unity Engine and Amazon Web Services.  
@@ -28,12 +26,3 @@ That of course depends on the group you join. We have three top-level organisati
 However, you will also be creating graphics for the games, i.e. draw the characters and animate them; choose sound files from existing libraries,
 design the UI and design the flow of user interaction.
 
-
-In case you have questions of any kind, feel free to ask me (Sebastian Felger).
-
-## Software versions
-We'll be using the current LTS version of Unity Engine, which is 2019.4.13f1.
-
-## We hope you enjoy working on a software project meant to bring people of all ages together just as much as we do! :)
-The Lylu team  
-www.lylu.de
